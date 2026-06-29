@@ -86,15 +86,19 @@ lucide-react (icons only — no other icon library)
 ### Colour Palette (defined in tailwind.config.ts)
 
 ```
-primary:     #0B1220  (near-black navy — headings, nav background)
-secondary:   #0E7490  (deep teal — section accents, borders)
-accent:      #2563EB  (blue — primary buttons, links, highlights)
-accent-warm: #C2410C  (burnt orange — Red Prana brand warmth, sparingly)
-success:     #10B981  (green — positive indicators)
-surface:     #F8FAFC  (off-white — page background)
-surface-dark:#0F172A  (dark sections — footer, hero)
-text:        #111827  (body text)
-text-muted:  #6B7280  (secondary text, captions)
+primary:          #0B1220  (near-black navy — headings, nav background)
+primary-light:    #1a2540  (lighter navy — hover states on dark backgrounds)
+secondary:        #0E7490  (deep teal — section accents, borders)
+secondary-light:  #0891b2  (lighter teal — hover states)
+accent:           #2563EB  (blue — primary buttons, links, highlights)
+accent-light:     #3b82f6  (lighter blue — hover states)
+accent-warm:      #C2410C  (burnt orange — Red Prana brand warmth, sparingly)
+success:          #10B981  (green — positive indicators)
+surface:          #F8FAFC  (off-white — page background)
+surface-dark:     #0F172A  (dark sections — footer, hero)
+text:             #111827  (body text)
+text-muted:       #6B7280  (secondary text, captions)
+text-inverse:     #F9FAFB  (text on dark backgrounds)
 ```
 
 **Brand rationale**: Navy + Teal = enterprise authority. Burnt orange (`accent-warm`) is the
@@ -109,6 +113,14 @@ Body:                'Inter', weight 400, 500
 Mono / Data:         'JetBrains Mono', weight 400 (for framework codes, version numbers)
 ```
 
+### Custom Font Sizes
+- `text-display-xl` — 4.5rem / line-height 1.1 (hero headlines)
+- `text-display-lg` — 3.75rem / line-height 1.15 (page titles)
+- `text-display-md` — 3rem / line-height 1.2 (section headings)
+
+### Background Utilities
+- `bg-hero-pattern` — dual radial gradient (teal + blue), use on hero dark sections
+
 ### Spacing Scale
 Follow Tailwind defaults. Section padding: `py-20 lg:py-28`. Container: `max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`.
 
@@ -117,9 +129,10 @@ Follow Tailwind defaults. Section padding: `py-20 lg:py-28`. Container: `max-w-7
 - Buttons: `rounded-full` (primary), `rounded-lg` (secondary)
 - Badges/tags: `rounded-full`
 
-### Shadows
-- Cards: `shadow-sm hover:shadow-lg transition-shadow`
+### Shadows (custom — defined in tailwind.config.ts)
+- Cards: `shadow-card hover:shadow-card-hover transition-shadow`
 - Hero elements: `shadow-2xl`
+- Glow effects: `shadow-glow-teal`, `shadow-glow-blue` (use on hover for interactive elements)
 
 ### Animation Principles (Framer Motion)
 - Page transitions: `fadeIn` with `y: 20 → 0`, duration `0.5s`
@@ -127,6 +140,7 @@ Follow Tailwind defaults. Section padding: `py-20 lg:py-28`. Container: `max-w-7
 - Scroll-triggered: use `whileInView` with `once: true`
 - Hover: `whileHover={{ scale: 1.02 }}` on cards
 - **No** looping animations on load — feels unserious to enterprise buyers
+- **Exception**: `CenterFlame` in `CompassRing.tsx` has a subtle pulsing glow (`repeat: Infinity`) — this is intentional as a brand element, not a page-load animation
 
 ---
 
@@ -170,16 +184,17 @@ src/
 │   │   ├── Navbar.tsx
 │   │   ├── Footer.tsx
 │   │   └── PageLayout.tsx
-│   ├── ui/
+│   ├── ui/                     ← NOT YET BUILT — planned for next build step
 │   │   ├── Button.tsx
 │   │   ├── Card.tsx
 │   │   ├── Badge.tsx
 │   │   ├── SectionHeader.tsx
 │   │   └── AnimatedSection.tsx
 │   ├── FrameworkCompass/
-│   │   ├── index.tsx
-│   │   ├── CompassNode.tsx
-│   │   └── FrameworkDetail.tsx
+│   │   ├── index.tsx           ← public API; handles scroll rotation + mode switching
+│   │   ├── CompassRing.tsx     ← SVG ring, tick marks, dashed spokes, CenterFlame
+│   │   ├── CompassNode.tsx     ← individual clickable node (derives position from springRotation)
+│   │   └── FrameworkDetail.tsx ← side panel shown when a node is selected
 │   └── sections/
 │       ├── Hero.tsx
 │       ├── ServicesGrid.tsx
@@ -192,7 +207,8 @@ src/
 │   ├── Services.tsx
 │   ├── Frameworks.tsx
 │   ├── About.tsx
-│   └── Contact.tsx
+│   ├── Contact.tsx
+│   └── CompassTest.tsx         ← dev-only test harness at /compass-test (not linked in nav)
 ├── hooks/
 │   ├── useScrollAnimation.ts
 │   └── useFrameworkCompass.ts
