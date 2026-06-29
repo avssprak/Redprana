@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { useMotionValue, useSpring, useScroll, useMotionValueEvent } from 'framer-motion'
 import { useNavigate, Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
-import { frameworks } from '@/data/frameworks'
+import { frameworks, JURISDICTION_FLAGS } from '@/data/frameworks'
 import { useFrameworkCompass } from '@/hooks/useFrameworkCompass'
 import type { Framework } from '@/types'
 import { CompassRing } from './CompassRing'
@@ -12,13 +12,6 @@ import { FrameworkDetail } from './FrameworkDetail'
 const MOBILE_COLOR_CLASSES: Record<string, string> = {
   accent: 'bg-accent',
   secondary: 'bg-secondary',
-}
-
-const JURISDICTION_FLAGS: Record<string, string> = {
-  'United States': '🇺🇸',
-  International: '🌐',
-  'European Union': '🇪🇺',
-  Singapore: '🇸🇬',
 }
 
 export interface FrameworkCompassProps {
@@ -60,16 +53,20 @@ export default function FrameworkCompass({ compact = false }: FrameworkCompassPr
 
   return (
     <div className="relative">
-      {/* Mobile: simplified card list */}
+      {/* Mobile: simplified card list — always navigate to the framework section */}
       <div className="md:hidden space-y-3">
         {frameworks.map((fw) => {
           const bgClass = MOBILE_COLOR_CLASSES[fw.color] ?? 'bg-accent'
           const flag = JURISDICTION_FLAGS[fw.jurisdiction] ?? '🌐'
+          const mobileDest = compact ? `/frameworks#${fw.id}` : `#${fw.id}`
           return (
-            <button
+            <Link
               key={fw.id}
-              onClick={() => handleSelect(fw)}
-              className="w-full text-left p-4 rounded-xl border border-secondary/20 bg-white hover:border-secondary/40 hover:shadow-card transition-all group"
+              to={mobileDest}
+              className="block w-full text-left p-4 rounded-xl border border-secondary/20 bg-white hover:border-secondary/40 hover:shadow-card transition-all group"
+              onKeyDown={(e) => {
+                if (e.key === ' ') { e.preventDefault(); navigate(mobileDest) }
+              }}
             >
               <div className="flex items-center gap-3">
                 <div
@@ -86,7 +83,7 @@ export default function FrameworkCompass({ compact = false }: FrameworkCompassPr
                   className="text-text-muted group-hover:text-secondary transition-colors flex-shrink-0"
                 />
               </div>
-            </button>
+            </Link>
           )
         })}
       </div>

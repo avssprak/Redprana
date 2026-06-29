@@ -98,7 +98,11 @@ lucide-react (icons only — no other icon library)
 
 ### Routing & Code Splitting
 
-All pages are `React.lazy` + `Suspense` in `App.tsx`. `PageLayout` (Navbar + Footer) wraps all routes. The `<main>` in `PageLayout` has `pt-16` to clear the fixed 64px navbar — all pages must account for this.
+All pages are `React.lazy` + `Suspense` in `App.tsx`. `PageLayout` (Navbar + Footer + `ScrollToTop`) wraps all routes. The `<main>` in `PageLayout` has `pt-16` to clear the fixed 64px navbar — all pages must account for this.
+
+### ScrollToTop
+
+`src/components/layout/ScrollToTop.tsx` renders inside `PageLayout` (not in `App.tsx`). On each navigation it either scrolls to `window.scrollTo(0,0)` (no hash) or smooth-scrolls to the hash element, retrying up to 15 times at 80ms intervals to handle lazy-rendered sections that may not be in the DOM yet. This is what makes `/frameworks#${id}` deep-links from the compact Compass work correctly.
 
 ### Import Alias
 
@@ -126,9 +130,10 @@ All site data lives in `src/data/`. Shared types are in `src/types/index.ts` —
 - `index.tsx` — public API. Accepts `compact?: boolean` prop. **Key behavior difference**: when `compact={true}`, clicking a node navigates to `/frameworks#${framework.id}` instead of expanding the detail panel. Used compact on Home, full (default) on Frameworks page.
 - `CompassRing.tsx` — SVG ring + tick marks + `CenterFlame` (the only `repeat: Infinity` animation allowed)
 - `CompassNode.tsx` — derives position from `springRotation` motion value; Tab + Enter accessible
-- `FrameworkDetail.tsx` — side panel with 3 requirements + Red Prana mapping
+- `FrameworkDetail.tsx` — side panel with 3 requirements + Red Prana mapping. Contains its own `JURISDICTION_FLAGS` and `BORDER_COLORS` lookup objects
 - Scroll rotation: `scrollY * 0.005` radians added to the spring rotation via `useMotionValueEvent`
-- Mobile fallback: below `md` breakpoint the compass is replaced with a simple card list
+- Mobile fallback: below `md` breakpoint the compass is replaced with a simple card list. **Exception**: in `Hero.tsx` the compass wrapper is `hidden md:flex aria-hidden="true"` — the mobile card list is intentionally suppressed in the hero to avoid clutter, so the compass is invisible to mobile visitors on the home page entirely
+- **`JURISDICTION_FLAGS`**: now a single export from `frameworks.ts` (`'United States' | 'International' | 'European Union' | 'Singapore'`) — imported by `index.tsx`, `FrameworkDetail.tsx`, and `Frameworks.tsx`. Adding a new jurisdiction only requires updating `frameworks.ts`.
 
 `useFrameworkCompass` hook in `src/hooks/` manages active selection state. `useScrollAnimation(threshold?)` tracks whether `scrollY` has passed a pixel threshold — used by Navbar to switch between transparent and opaque backgrounds.
 

@@ -109,7 +109,7 @@ function ServiceRow({ service, index }: { service: Service; index: number }) {
         </div>
 
         {/* Content */}
-        <div className="flex-1">
+        <div className="flex-1 w-full">
           <div className="flex flex-wrap items-center gap-3 mb-3">
             <h2 className="font-display font-semibold text-2xl lg:text-3xl text-primary leading-snug">
               {service.title}

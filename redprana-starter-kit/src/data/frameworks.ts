@@ -1,5 +1,12 @@
 import type { Framework } from '@/types'
 
+export const JURISDICTION_FLAGS: Record<string, string> = {
+  'United States': '🇺🇸',
+  International: '🌐',
+  'European Union': '🇪🇺',
+  Singapore: '🇸🇬',
+}
+
 export const frameworks: Framework[] = [
   {
     id: 'nist',

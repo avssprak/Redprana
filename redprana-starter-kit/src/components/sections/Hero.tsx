@@ -19,7 +19,7 @@ export function Hero() {
             <span className="inline-block font-mono text-xs text-secondary uppercase tracking-widest mb-6">
               AI Governance · ISO 42001 · NIST AI RMF · MAS FEAT
             </span>
-            <h1 className="font-display font-bold text-5xl lg:text-6xl text-white leading-[1.1] mb-6">
+            <h1 className="font-display font-bold text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.1] mb-6">
               AI Governance That Keeps Enterprise AI{' '}
               <span className="text-gradient-teal">Accountable</span>
             </h1>

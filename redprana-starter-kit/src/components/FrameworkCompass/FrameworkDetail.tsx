@@ -2,17 +2,11 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { X, ArrowRight } from 'lucide-react'
 import type { Framework } from '@/types'
+import { JURISDICTION_FLAGS } from '@/data/frameworks'
 
 interface FrameworkDetailProps {
   framework: Framework
   onClose: () => void
-}
-
-const JURISDICTION_FLAGS: Record<string, string> = {
-  'United States': '🇺🇸',
-  International: '🌐',
-  'European Union': '🇪🇺',
-  Singapore: '🇸🇬',
 }
 
 const BORDER_COLORS: Record<string, string> = {
@@ -93,6 +87,7 @@ export function FrameworkDetail({ framework, onClose }: FrameworkDetailProps) {
       {/* CTA */}
       <Link
         to={`/frameworks#${framework.id}`}
+        onClick={onClose}
         className="inline-flex items-center gap-1.5 text-xs font-semibold text-accent hover:text-accent-light transition-colors"
       >
         Learn more on Frameworks page

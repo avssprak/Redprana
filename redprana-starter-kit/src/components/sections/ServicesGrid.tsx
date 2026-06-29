@@ -95,7 +95,7 @@ export function ServicesGrid() {
                 </ul>
                 <div className="mt-auto">
                   <Link
-                    to="/services"
+                    to={`/services#${service.id}`}
                     className="text-sm font-semibold text-accent hover:text-accent-light transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:rounded"
                     aria-label={`Learn more about ${service.title}`}
                   >

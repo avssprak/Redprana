@@ -2,16 +2,9 @@ import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ChevronRight, ArrowRight, Check } from 'lucide-react'
-import { frameworks } from '@/data/frameworks'
+import { frameworks, JURISDICTION_FLAGS } from '@/data/frameworks'
 import type { Framework } from '@/types'
 import FrameworkCompass from '@/components/FrameworkCompass'
-
-const JURISDICTION_FLAGS: Record<string, string> = {
-  'United States': '🇺🇸',
-  International: '🌐',
-  'European Union': '🇪🇺',
-  Singapore: '🇸🇬',
-}
 
 const FRAMEWORK_OVERVIEWS: Record<string, string> = {
   nist: 'The NIST AI Risk Management Framework (AI RMF 1.0), published by the National Institute of Standards and Technology in January 2023, provides a structured, voluntary approach to managing AI risks across the full AI lifecycle — from design and development through deployment and decommissioning. Organised around four core functions — GOVERN, MAP, MEASURE, and MANAGE — it is designed to be adaptable to any organisation, sector, or AI system type. It is rapidly becoming the de facto US federal standard, referenced in government procurement requirements, sector-specific regulations, and the White House Executive Order on AI. For US enterprises and federal contractors, demonstrating NIST AI RMF alignment is an increasingly baseline supervisory expectation.',
@@ -308,7 +301,7 @@ function ComparisonTable() {
           viewport={{ once: true }}
         >
           <table
-            className="w-full text-sm border-collapse"
+            className="w-full min-w-[600px] text-sm border-collapse"
             aria-label="AI governance framework comparison"
           >
             <thead>
