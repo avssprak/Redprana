@@ -33,15 +33,15 @@ const cardVariants = {
 
 export function ServicesGrid() {
   return (
-    <section className="py-20 lg:py-28 bg-surface">
+    <section className="py-20 lg:py-28 bg-surface-dark">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Section header */}
         <div className="text-center mb-16">
-          <span className="font-mono text-xs text-secondary uppercase tracking-widest">
+          <span className="rp-eyebrow">
             What We Do
           </span>
-          <h2 className="font-display font-bold text-4xl text-primary mt-3 mb-4">
+          <h2 className="font-display font-bold text-4xl text-white mt-3 mb-4">
             End-to-End AI Governance Services
           </h2>
           <p className="text-text-muted text-lg max-w-2xl mx-auto">
@@ -64,26 +64,25 @@ export function ServicesGrid() {
               <motion.div
                 key={service.id}
                 variants={cardVariants}
-                whileHover={{ scale: 1.02 }}
-                className="bg-white rounded-2xl shadow-card hover:shadow-card-hover transition-shadow p-6 flex flex-col"
+                className="rp-glow-card p-6 flex flex-col"
               >
                 <div className="flex items-start justify-between mb-4">
-                  <Icon size={28} className="text-secondary" aria-hidden="true" />
+                  <Icon size={28} className="text-success" aria-hidden="true" />
                   {isComingSoon && (
                     <span className="bg-accent-warm/10 text-accent-warm rounded-full px-3 py-1 text-xs font-medium">
                       Coming Soon
                     </span>
                   )}
                 </div>
-                <h3 className="font-display font-semibold text-lg text-primary mb-2">
+                <h3 className="font-display font-semibold text-lg text-white mb-2">
                   {service.title}
                 </h3>
-                <p className="text-sm text-text-muted line-clamp-2 mb-4">
+                <p className="text-sm text-rp-muted line-clamp-2 mb-4">
                   {service.description}
                 </p>
                 <ul className="space-y-1.5 mb-5" aria-label={`Key features of ${service.title}`}>
                   {service.features.slice(0, 2).map((feature) => (
-                    <li key={feature} className="flex items-start gap-2 text-xs text-text-muted">
+                    <li key={feature} className="flex items-start gap-2 text-xs text-rp-muted">
                       <CheckCircle2
                         size={14}
                         className="text-success mt-0.5 flex-shrink-0"

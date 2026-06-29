@@ -214,7 +214,7 @@ function RegionalCoverage() {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <span className="font-mono text-xs text-secondary uppercase tracking-widest">
+          <span className="rp-eyebrow">
             Where We Operate
           </span>
           <h2 className="font-display font-bold text-3xl lg:text-4xl text-white mt-3 mb-4">
@@ -236,7 +236,7 @@ function RegionalCoverage() {
             <motion.div
               key={region.name}
               variants={fadeUp}
-              className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/[0.08] hover:border-secondary/30 transition-colors"
+              className="rp-glow-card p-6"
             >
               <div className="flex items-center gap-3 mb-4">
                 <span className="text-3xl" role="img" aria-label={`${region.name} flag`}>
@@ -283,7 +283,7 @@ function DiscoveryCTA() {
           </p>
           <a
             href="mailto:prakash@redprana.com?subject=Discovery%20Call%20Request"
-            className="inline-flex items-center justify-center rounded-full bg-accent hover:bg-accent-light px-8 py-3.5 text-sm font-semibold text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+            className="rp-btn-neon"
           >
             Book Discovery Call
           </a>

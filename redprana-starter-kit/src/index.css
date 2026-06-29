@@ -35,3 +35,212 @@
     background-size: 40px 40px;
   }
 }
+
+/* ============================================================
+   RED PRANA — Design System Variables & Components
+   ============================================================ */
+:root {
+  --rp-border: rgba(120, 220, 200, 0.12);
+  --rp-border-strong: rgba(120, 220, 200, 0.28);
+
+  --rp-emerald: #10b981;
+  --rp-emerald-bright: #34d399;
+  --rp-teal: #14b8a6;
+  --rp-cyan: #22d3ee;
+
+  --rp-text-muted: #8b97a7;
+
+  --rp-grad-tech: linear-gradient(135deg, #10b981 0%, #14b8a6 45%, #22d3ee 100%);
+  --rp-glow-emerald: 0 0 24px rgba(16, 185, 129, 0.45);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: #05060a; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #10b981, #14b8a6);
+  border-radius: 99px;
+  border: 2px solid #05060a;
+}
+::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, #34d399, #22d3ee); }
+
+::selection { background: rgba(16, 185, 129, 0.32); color: #e6edf3; }
+
+/* Gradient text — emerald → teal → cyan */
+.rp-text-gradient {
+  background: var(--rp-grad-tech);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Eyebrow / kicker label — pill badge with teal border */
+.rp-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem 0.85rem;
+  border-radius: 99px;
+  border: 1px solid var(--rp-border-strong);
+  background: rgba(16, 185, 129, 0.06);
+  color: var(--rp-emerald-bright);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Aurora — animated floating radial glow orbs */
+.rp-aurora {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.rp-aurora::before,
+.rp-aurora::after {
+  content: "";
+  position: absolute;
+  width: 50vw;
+  height: 50vw;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.4;
+  animation: rp-aurora-float 18s ease-in-out infinite;
+}
+.rp-aurora::before {
+  top: -15%;
+  left: -8%;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.55), transparent 65%);
+}
+.rp-aurora::after {
+  bottom: -20%;
+  right: -8%;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.45), transparent 65%);
+  animation-delay: -9s;
+}
+@keyframes rp-aurora-float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%       { transform: translate(4%, 6%) scale(1.12); }
+}
+
+/* Glow card — dark card with hover lift and emerald border glow */
+.rp-glow-card {
+  position: relative;
+  background: linear-gradient(160deg, rgba(17, 21, 31, 0.9), rgba(8, 10, 17, 0.92));
+  border: 1px solid var(--rp-border);
+  border-radius: 1rem;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.4s, box-shadow 0.4s;
+  overflow: hidden;
+}
+.rp-glow-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, transparent, rgba(52, 211, 153, 0), transparent);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.rp-glow-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--rp-border-strong);
+  box-shadow: 0 18px 50px -20px rgba(16, 185, 129, 0.45), inset 0 1px 0 rgba(255,255,255,0.04);
+}
+.rp-glow-card:hover::before {
+  opacity: 1;
+  background: linear-gradient(135deg, rgba(52, 211, 153, 0.7), rgba(34, 211, 238, 0.2), transparent);
+}
+
+/* Neon button — gradient fill with glow on hover */
+.rp-btn-neon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: 99px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: #04110d;
+  background: var(--rp-grad-tech);
+  box-shadow: 0 0 0 rgba(16, 185, 129, 0);
+  transition: transform 0.25s ease, box-shadow 0.3s ease, filter 0.3s ease;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+}
+.rp-btn-neon:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+  box-shadow: 0 0 22px rgba(16, 185, 129, 0.55), 0 0 48px rgba(34, 211, 238, 0.28);
+}
+.rp-btn-neon:active  { transform: translateY(0); }
+.rp-btn-neon:focus-visible { outline: 2px solid #34d399; outline-offset: 3px; }
+
+/* Ghost button — teal outline with glow on hover */
+.rp-btn-ghost {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: 99px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--rp-emerald-bright);
+  background: rgba(16, 185, 129, 0.04);
+  border: 1px solid var(--rp-border-strong);
+  transition: all 0.25s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+.rp-btn-ghost:hover {
+  background: rgba(16, 185, 129, 0.12);
+  border-color: var(--rp-emerald);
+  box-shadow: var(--rp-glow-emerald);
+}
+.rp-btn-ghost:focus-visible { outline: 2px solid #34d399; outline-offset: 3px; }
+
+/* Readable muted text on dark card backgrounds */
+.text-rp-muted { color: var(--rp-text-muted); }
+
+/* Pulse orb */
+.rp-orb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--rp-emerald-bright);
+  box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.6);
+  animation: rp-pulse 2s infinite;
+}
+@keyframes rp-pulse {
+  0%   { box-shadow: 0 0 0 0   rgba(52, 211, 153, 0.6); }
+  70%  { box-shadow: 0 0 0 14px rgba(52, 211, 153, 0); }
+  100% { box-shadow: 0 0 0 0   rgba(52, 211, 153, 0); }
+}
+
+/* Marquee */
+.rp-marquee {
+  display: flex;
+  gap: 3rem;
+  width: max-content;
+  animation: rp-marquee-scroll 38s linear infinite;
+}
+@keyframes rp-marquee-scroll {
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rp-aurora::before, .rp-aurora::after,
+  .rp-orb,
+  .rp-marquee { animation: none !important; }
+}

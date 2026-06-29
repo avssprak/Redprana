@@ -98,7 +98,7 @@ function FrameworksHero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <span className="font-mono text-xs text-secondary uppercase tracking-widest">
+          <span className="rp-eyebrow">
             Framework Coverage
           </span>
           <h1 className="font-display font-bold text-4xl lg:text-5xl text-white mt-3 mb-4 leading-tight">
@@ -127,7 +127,7 @@ function CompassSection() {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <span className="font-mono text-xs text-secondary uppercase tracking-widest">
+          <span className="rp-eyebrow">
             Interactive Compass
           </span>
           <h2 className="font-display font-bold text-3xl lg:text-4xl text-white mt-3">
@@ -281,7 +281,7 @@ function ComparisonTable() {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <span className="font-mono text-xs text-secondary uppercase tracking-widest">
+          <span className="rp-eyebrow">
             Framework Comparison
           </span>
           <h2 className="font-display font-bold text-3xl lg:text-4xl text-white mt-3 mb-4">
@@ -378,7 +378,7 @@ function FrameworkSelectionCTA() {
           </p>
           <a
             href="mailto:prakash@redprana.com?subject=Framework%20Selection%20Workshop"
-            className="inline-flex items-center justify-center rounded-full bg-accent hover:bg-accent-light px-8 py-3.5 text-sm font-semibold text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+            className="rp-btn-neon"
           >
             Book a Framework Selection Workshop
           </a>
