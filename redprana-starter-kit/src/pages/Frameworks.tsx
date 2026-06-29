@@ -82,9 +82,9 @@ function parseRequirement(req: string): { label?: string; text: string } {
 
 function FrameworksHero() {
   return (
-    <section className="relative bg-primary overflow-hidden">
+    <section className="relative bg-primary overflow-hidden -mt-16">
       <div className="absolute inset-0 bg-hero-grid pointer-events-none" aria-hidden="true" />
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-16 lg:pt-36 lg:pb-20">
         <nav
           aria-label="Breadcrumb"
           className="flex items-center gap-1.5 text-sm text-white/50 mb-6"

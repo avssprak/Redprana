@@ -17,7 +17,7 @@ const stagger = {
 
 function AboutHero() {
   return (
-    <section className="relative bg-surface-dark overflow-hidden">
+    <section className="relative bg-surface-dark overflow-hidden -mt-16">
       {/* Faint compass ring motif */}
       <svg
         className="absolute right-0 top-0 h-full w-auto opacity-[0.04] pointer-events-none"
@@ -32,7 +32,7 @@ function AboutHero() {
         <line x1="20" y1="300" x2="580" y2="300" stroke="white" strokeWidth="0.5" strokeDasharray="4 8" />
       </svg>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 pb-20 lg:pt-44 lg:pb-28">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -90,7 +90,7 @@ function FounderSection() {
               <div
                 className="relative w-64 h-64 lg:w-72 lg:h-72 rounded-full bg-secondary/20 border-2 border-secondary/30 flex items-center justify-center"
                 role="img"
-                aria-label="Prakash — founder photo"
+                aria-label="Prakash Achanta — founder photo"
               >
                 <span
                   className="font-display font-bold text-8xl text-secondary select-none"
@@ -105,7 +105,7 @@ function FounderSection() {
           {/* Bio */}
           <motion.div variants={fadeUp}>
             <div className="flex flex-wrap items-center gap-3 mb-5">
-              <h2 className="font-display font-bold text-3xl lg:text-4xl text-primary">Prakash</h2>
+              <h2 className="font-display font-bold text-3xl lg:text-4xl text-primary">Prakash Achanta</h2>
               <span className="inline-flex items-center rounded-full bg-secondary/10 text-secondary px-4 py-1.5 text-sm font-medium border border-secondary/20">
                 Founder, Red Prana Enterprises
               </span>
@@ -113,7 +113,7 @@ function FounderSection() {
 
             <div className="space-y-4 text-text-muted leading-relaxed mb-8">
               <p>
-                Prakash is an AI Governance consultant and platform builder with deep expertise
+                Prakash Achanta is an AI Governance consultant and platform builder with deep expertise
                 across regulated industries in the US, Singapore, and the Middle East. He founded
                 Red Prana Enterprises to help organisations build AI systems that are not just
                 capable — but accountable, auditable, and compliant.
@@ -125,7 +125,7 @@ function FounderSection() {
                 Operating System designed for multi-tenant deployment.
               </p>
               <p>
-                Prakash works at the intersection of AI regulation, enterprise risk, and platform
+                Prakash Achanta works at the intersection of AI regulation, enterprise risk, and platform
                 engineering.
               </p>
             </div>
@@ -145,7 +145,7 @@ function FounderSection() {
               href="mailto:prakash@redprana.com"
               className="inline-flex items-center gap-2 text-accent hover:text-accent-light font-semibold transition-colors focus:outline-none focus-visible:underline"
             >
-              Work with Prakash
+              Work with Prakash Achanta
               <ArrowRight size={16} aria-hidden="true" />
             </a>
           </motion.div>
@@ -248,7 +248,7 @@ function AIGOSMention() {
             AI-GOS™
           </h2>
           <p className="text-text-muted text-lg leading-relaxed mb-8">
-            Beyond consulting, Prakash is building AI-GOS™ — an enterprise AI Governance
+            Beyond consulting, Prakash Achanta is building AI-GOS™ — an enterprise AI Governance
             Operating System that turns governance frameworks into operational software.
           </p>
           <Link
@@ -270,7 +270,7 @@ export default function About() {
   return (
     <>
       <Helmet>
-        <title>About Prakash — AI Governance Consultant | Red Prana Enterprises</title>
+        <title>About Prakash Achanta — AI Governance Consultant | Red Prana Enterprises</title>
         <meta
           name="description"
           content="Meet the founder of Red Prana Enterprises — AI governance practitioner and builder of AI-GOS™."

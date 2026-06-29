@@ -14,7 +14,7 @@ export default function Home() {
         <title>AI Governance Consultant — Red Prana Enterprises</title>
         <meta
           name="description"
-          content="Enterprise AI governance consulting across ISO 42001, NIST AI RMF, MAS FEAT, and EU AI Act. Book a consultation with Prakash."
+          content="Enterprise AI governance consulting across ISO 42001, NIST AI RMF, MAS FEAT, and EU AI Act. Book a consultation with Prakash Achanta."
         />
       </Helmet>
       <motion.div

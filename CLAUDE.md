@@ -7,7 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 **Brand**: Red Prana  
 **Legal Entity**: Red Prana Enterprises  
 **Domain**: redprana.com  
-**Founder**: Prakash (personal brand — he IS the product at this stage)  
+**Founder**: Prakash Achanta (personal brand — he IS the product at this stage)  
 **Product**: AI-GOS™ (AI Governance Operating System) — future SaaS, referenced on site  
 **Contact Email**: prakash@redprana.com  
 **Booking**: mailto:prakash@redprana.com with subject "Book a Consultation"
@@ -66,12 +66,12 @@ RewriteRule . /index.html [L]
 |-------|------|-------------|
 | `/` | Home | Book a Consultation |
 | `/services` | Services | Request a Proposal |
-| `/frameworks` | Frameworks | Download Framework Guide |
+| `/frameworks` | Frameworks | Book a Framework Selection Workshop |
 | `/about` | About Prakash | Book a Call |
 | `/contact` | Contact | Send Message (mailto) |
 | `/compass-test` | CompassTest | Dev-only test harness — not linked in nav |
 
-**Current status**: `About.tsx` and `Contact.tsx` are stubs (placeholder `<h1>` only). All other pages are fully built.
+**Current status**: All 5 pages are fully built. `About.tsx` has four sections (hero, founder bio with expertise badges, values, AI-GOS mention) — the founder headshot is still a placeholder `div` awaiting a real photo (400×400px, see TODO in `FounderSection`). `Contact.tsx` has three contact options (book, proposal, waitlist), a "What Happens Next" process list, and a copy-to-clipboard email display. `Services.tsx` has two additional hardcoded sections beyond the service rows: `RegionalCoverage` (three jurisdiction cards: US, Singapore, Middle East) and `DiscoveryCTA` (free discovery call CTA) — this data lives inline in the file, not in `services.ts`. `Frameworks.tsx` similarly has hardcoded `FRAMEWORK_OVERVIEWS` and `COMPARISON_ROWS` constants inline rather than in the data layer.
 
 ---
 
@@ -113,10 +113,10 @@ motion: ['framer-motion']
 
 ### Data Layer
 
-All site data lives in `src/data/`. Read these before adding types or copy:
+All site data lives in `src/data/`. Shared types are in `src/types/index.ts` — read this before adding new interfaces. Read data files before adding types or copy:
 
 - `frameworks.ts` — exports `frameworks: Framework[]` and `getFrameworkById(id)`. Each entry has `angle: 0 | 90 | 180 | 270` (compass position) and `color: 'accent' | 'secondary'` (only these two values are used — the Compass component maps them to Tailwind classes via a lookup object).
-- `services.ts` — service definitions with `stage: 'available' | 'coming-soon'`
+- `services.ts` — service definitions with `stage: 'available' | 'coming-soon'`. The `icon` field is a **string** (Lucide icon name). `Services.tsx` maintains an `iconMap: Record<string, LucideIcon>` to resolve these — adding a new service with a new icon requires updating `iconMap` in that file.
 - `navigation.ts` — nav items
 
 ### Signature Element — Framework Compass
@@ -130,7 +130,7 @@ All site data lives in `src/data/`. Read these before adding types or copy:
 - Scroll rotation: `scrollY * 0.005` radians added to the spring rotation via `useMotionValueEvent`
 - Mobile fallback: below `md` breakpoint the compass is replaced with a simple card list
 
-`useFrameworkCompass` hook in `src/hooks/` manages active selection state.
+`useFrameworkCompass` hook in `src/hooks/` manages active selection state. `useScrollAnimation(threshold?)` tracks whether `scrollY` has passed a pixel threshold — used by Navbar to switch between transparent and opaque backgrounds.
 
 ---
 
@@ -218,6 +218,14 @@ animate-fade-up         fadeUp keyframe (0.6s ease-out)
 animate-compass-spin    slow 20s linear spin
 ```
 
+Additional utilities defined in `src/index.css` via `@layer utilities`:
+
+```
+bg-hero-grid            subtle white grid lines (40px) — used on dark hero sections
+text-gradient-teal      teal→blue gradient text (via background-clip)
+text-gradient-warm      burnt-orange→blue gradient text
+```
+
 ### Animation (Framer Motion)
 
 - Page transitions: `fadeIn` with `y: 20 → 0`, duration `0.5s`
@@ -254,13 +262,13 @@ animate-compass-spin    slow 20s linear spin
 5. **AI-GOS™ Platform** — Enterprise AI Governance Operating System (coming soon — join waitlist)
 6. **Board & Executive Briefings** — AI governance literacy and accountability frameworks for leadership
 
-### About Prakash
+### About Prakash Achanta
 
-"Prakash is an AI Governance consultant and platform builder with deep expertise across regulated industries in the US, Singapore, and the Middle East. He founded Red Prana Enterprises to help organisations build AI systems that are not just capable — but accountable, auditable, and compliant.
+"Prakash Achanta is an AI Governance consultant and platform builder with deep expertise across regulated industries in the US, Singapore, and the Middle East. He founded Red Prana Enterprises to help organisations build AI systems that are not just capable — but accountable, auditable, and compliant.
 
 He developed the QDT-AIGMM™ AI Governance Maturity Model, has delivered assessments for enterprise clients across financial services and scientific information sectors, and is building AI-GOS™ — an enterprise AI Governance Operating System designed for multi-tenant deployment.
 
-Prakash works at the intersection of AI regulation, enterprise risk, and platform engineering."
+Prakash Achanta works at the intersection of AI regulation, enterprise risk, and platform engineering."
 
 ---
 
@@ -271,7 +279,7 @@ Prakash works at the intersection of AI regulation, enterprise risk, and platfor
 | Home | AI Governance Consultant — Red Prana Enterprises | Enterprise AI governance consulting across ISO 42001, NIST AI RMF, MAS FEAT, and EU AI Act. Book a consultation with Prakash. |
 | Services | AI Governance Services — Red Prana | Maturity assessments, framework implementation, AI risk registers, and regulatory compliance for US, Singapore, and Middle East enterprises. |
 | Frameworks | AI Governance Frameworks — ISO 42001, NIST AI RMF, MAS FEAT | Interactive guide to the leading AI governance frameworks — mapped, compared, and ready to implement. |
-| About | About Prakash — AI Governance Consultant | Meet the founder of Red Prana Enterprises, AI governance practitioner and builder of AI-GOS™. |
+| About | About Prakash Achanta — AI Governance Consultant \| Red Prana Enterprises | Meet the founder of Red Prana Enterprises, AI governance practitioner and builder of AI-GOS™. |
 | Contact | Contact Red Prana — Book an AI Governance Consultation | Get in touch with Red Prana Enterprises to discuss your AI governance assessment or implementation project. |
 
 ---
