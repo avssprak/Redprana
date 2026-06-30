@@ -21,6 +21,9 @@ export default {
           light: '#3b82f6',
           warm: '#C2410C',  // The "Prana" warmth — use sparingly
         },
+        brand: {
+          red: '#C52032',  // "NASA Red" — logo wordmark only
+        },
         success: '#10B981',
         surface: {
           DEFAULT: '#F8FAFC',
@@ -36,6 +39,7 @@ export default {
         display: ['Poppins', 'sans-serif'],
         body: ['Inter', 'sans-serif'],
         mono: ['JetBrains Mono', 'monospace'],
+        logo: ['Audiowide', 'sans-serif'],
       },
       fontSize: {
         'display-xl': ['4.5rem', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
@@ -55,8 +59,9 @@ export default {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'hero-pattern': `
-          radial-gradient(ellipse at 20% 50%, rgba(14, 116, 144, 0.15) 0%, transparent 50%),
-          radial-gradient(ellipse at 80% 20%, rgba(37, 99, 235, 0.1) 0%, transparent 50%)
+          radial-gradient(ellipse at 20% 50%, rgba(14, 116, 144, 0.22) 0%, transparent 55%),
+          radial-gradient(ellipse at 80% 30%, rgba(37, 99, 235, 0.18) 0%, transparent 55%),
+          radial-gradient(ellipse at 65% 80%, rgba(14, 116, 144, 0.12) 0%, transparent 50%)
         `,
       },
       boxShadow: {

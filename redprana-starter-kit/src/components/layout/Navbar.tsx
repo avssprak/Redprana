@@ -7,27 +7,6 @@ import { navItems } from '@/data/navigation'
 
 const desktopNavLinks = navItems.filter(item => item.label !== 'Contact')
 
-function LogoMark() {
-  return (
-    <svg width="20" height="24" viewBox="0 0 20 24" fill="none" aria-hidden="true">
-      <path
-        d="M10 1C10 1 3 8 3 13.5C3 17.642 6.134 21 10 21C13.866 21 17 17.642 17 13.5C17 8 10 1 10 1Z"
-        fill="#C2410C"
-      />
-      <path
-        d="M10 21C6 21.5 2 22.5 1 24H19C18 22.5 14 21.5 10 21Z"
-        fill="#C2410C"
-        fillOpacity="0.55"
-      />
-      <path
-        d="M10 6.5C10 6.5 7.5 10 7.5 13C7.5 14.657 8.619 16 10 16C11.381 16 12.5 14.657 12.5 13C12.5 10 10 6.5 10 6.5Z"
-        fill="white"
-        fillOpacity="0.3"
-      />
-    </svg>
-  )
-}
-
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const { scrolled } = useScrollAnimation(50)
@@ -49,12 +28,12 @@ export function Navbar() {
           {/* Logo */}
           <Link
             to="/"
-            className="flex items-center gap-2.5 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+            className="flex items-center rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             aria-label="Red Prana — home"
           >
-            <LogoMark />
-            <span className="font-display font-semibold text-lg text-white tracking-tight">
-              Red Prana
+            <span className="font-logo text-2xl lg:text-3xl tracking-tight">
+              <span className="text-white">red</span>
+              <span className="text-brand-red">prana</span>
             </span>
           </Link>
 

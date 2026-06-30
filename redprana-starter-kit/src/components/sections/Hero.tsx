@@ -4,11 +4,11 @@ import FrameworkCompass from '@/components/FrameworkCompass'
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen bg-surface-dark bg-hero-pattern flex items-center overflow-hidden -mt-16">
+    <section className="relative bg-surface-dark bg-hero-pattern flex items-center overflow-hidden -mt-16">
       <div className="absolute inset-0 bg-hero-grid pointer-events-none" aria-hidden="true" />
       <div className="rp-aurora" aria-hidden="true" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 pb-24 lg:pt-44 lg:pb-32 w-full">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20 lg:pt-32 lg:pb-24 w-full">
         <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
 
           {/* Left: Text */}
@@ -58,6 +58,10 @@ export function Hero() {
           >
             <div
               className="absolute inset-0 bg-gradient-radial from-secondary/20 to-transparent"
+              aria-hidden="true"
+            />
+            <div
+              className="absolute w-[360px] h-[360px] rounded-full border border-secondary/10"
               aria-hidden="true"
             />
             <div className="relative">

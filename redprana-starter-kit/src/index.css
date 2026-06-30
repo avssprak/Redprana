@@ -103,11 +103,11 @@
 .rp-aurora::after {
   content: "";
   position: absolute;
-  width: 50vw;
-  height: 50vw;
+  width: 58vw;
+  height: 58vw;
   border-radius: 50%;
   filter: blur(90px);
-  opacity: 0.4;
+  opacity: 0.5;
   animation: rp-aurora-float 18s ease-in-out infinite;
 }
 .rp-aurora::before {
