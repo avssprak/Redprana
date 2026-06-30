@@ -147,6 +147,7 @@
   mask-composite: exclude;
   opacity: 0;
   transition: opacity 0.4s;
+  pointer-events: none;
 }
 .rp-glow-card:hover {
   transform: translateY(-6px);
