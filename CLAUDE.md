@@ -45,7 +45,9 @@ There is no test suite. `npm run build` (which runs `tsc` first) is the primary 
 
 **Deploy**: `npm run build` → upload `dist/` contents to GoDaddy cPanel `public_html/`
 
-### .htaccess required in public_html/ root
+### .htaccess
+
+`redprana-starter-kit/public/.htaccess` is already checked into the repo and is copied into `dist/` on every build — no manual server-side step needed. It contains the SPA-fallback rewrite:
 
 ```apache
 RewriteEngine On
@@ -184,6 +186,7 @@ secondary-light   #0891b2  lighter teal — hover states
 accent            #2563EB  blue — primary buttons, links, highlights
 accent-light      #3b82f6  lighter blue — hover states
 accent-warm       #C2410C  burnt orange — Red Prana brand warmth, use sparingly
+brand-red         #C52032  "NASA Red" — logo wordmark only (`text-brand-red`), never for UI elements
 success           #10B981  green — positive indicators
 surface           #F8FAFC  off-white — page background
 surface-dark      #0F172A  dark sections — footer, hero
@@ -197,10 +200,13 @@ Brand rationale: Navy + Teal = enterprise authority. `accent-warm` is the "Prana
 ### Typography (Google Fonts loaded in index.html)
 
 ```
-font-display  →  Poppins 600/700  (headings)
-font-body     →  Inter 400/500    (body)
+font-display  →  Poppins 600/700     (headings)
+font-body     →  Inter 400/500       (body)
 font-mono     →  JetBrains Mono 400  (framework codes, version numbers)
+font-logo     →  Audiowide           (wordmark only — see Navbar.tsx / Footer.tsx)
 ```
+
+The logo wordmark itself (`font-logo`, e.g. "Red" + `text-brand-red` "prana") is hand-built in `Navbar.tsx` and `Footer.tsx`, not an image — static logo files for other contexts (favicon, social, print) live in `public/brand/`.
 
 Custom font-size utilities: `text-display-xl` (4.5rem), `text-display-lg` (3.75rem), `text-display-md` (3rem).
 
