@@ -11,6 +11,8 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
+    reportCompressedSize: true,
+    chunkSizeWarningLimit: 400,
     rollupOptions: {
       output: {
         manualChunks: {

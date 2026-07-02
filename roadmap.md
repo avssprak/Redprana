@@ -10,14 +10,14 @@
 **Deploy**: GoDaddy cPanel, static Vite build
 
 **Prompts to run (in order)**:
-- [ ] 00-project-setup.md
-- [ ] 01-navbar-footer.md
-- [ ] 02-framework-compass.md ← Build this before any pages
-- [ ] 03-home-page.md
-- [ ] 04-services-page.md
-- [ ] 05-frameworks-page.md
-- [ ] 06-about-contact-pages.md
-- [ ] 07-seo-performance-deploy.md
+- [x] 00-project-setup.md
+- [x] 01-navbar-footer.md
+- [x] 02-framework-compass.md ← Build this before any pages
+- [x] 03-home-page.md
+- [x] 04-services-page.md
+- [x] 05-frameworks-page.md
+- [x] 06-about-contact-pages.md
+- [x] 07-seo-performance-deploy.md
 
 ---
 

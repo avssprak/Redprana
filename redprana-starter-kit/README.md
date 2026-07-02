@@ -41,6 +41,16 @@ npm run build
 across NIST AI RMF, ISO 42001, EU AI Act, and MAS FEAT/AIRG. This is the signature
 differentiator element. See `src/components/FrameworkCompass/`.
 
+## TODO: OG Image
+
+`index.html` references `public/og-image.png` (used for Open Graph / Twitter Card previews) but the file doesn't exist yet. Create a 1200×630px image with:
+- Background: `#0B1220`
+- "Red Prana Enterprises" in Poppins 700, white
+- "AI Governance Consulting" subtitle in Inter, `#0E7490`
+- The Framework Compass visual as a decorative element
+
+Save as `public/og-image.png`.
+
 ## Project Memory
 
 → Read `CLAUDE.md` before every Claude Code session. It contains all design decisions,
