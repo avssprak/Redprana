@@ -3,6 +3,7 @@ import type { NavItem } from '@/types'
 export const navItems: NavItem[] = [
   { label: 'Services', href: '/services' },
   { label: 'Frameworks', href: '/frameworks' },
+  { label: 'Resources', href: '/resources' },
   { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },
 ]
@@ -23,6 +24,7 @@ export const footerLinks = {
     { label: 'MAS FEAT / AIRG', href: '/frameworks#mas' },
   ],
   company: [
+    { label: 'Resources', href: '/resources' },
     { label: 'About', href: '/about' },
     { label: 'Contact', href: '/contact' },
   ],

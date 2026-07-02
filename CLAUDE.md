@@ -69,11 +69,13 @@ RewriteRule . /index.html [L]
 | `/` | Home | Book a Consultation |
 | `/services` | Services | Request a Proposal |
 | `/frameworks` | Frameworks | Book a Framework Selection Workshop |
+| `/resources` | Resources | Start Checklist → gated PDF report |
 | `/about` | About Prakash | Book a Call |
 | `/contact` | Contact | Send Message (mailto) |
 | `/compass-test` | CompassTest | Dev-only test harness — not linked in nav |
 
-**Current status**: All 5 pages are fully built. `About.tsx` has four sections (hero, founder bio with expertise badges, values, AI-GOS mention) — the founder headshot is still a placeholder `div` awaiting a real photo (400×400px, see TODO in `FounderSection`). `Contact.tsx` has three contact options (book, proposal, waitlist), a "What Happens Next" process list, and a copy-to-clipboard email display. `Services.tsx` has two additional hardcoded sections beyond the service rows: `RegionalCoverage` (three jurisdiction cards: US, Singapore, Middle East) and `DiscoveryCTA` (free discovery call CTA) — this data lives inline in the file, not in `services.ts`. `Frameworks.tsx` similarly has hardcoded `FRAMEWORK_OVERVIEWS` and `COMPARISON_ROWS` constants inline rather than in the data layer.
+**Current status**: All 5 Stage 1 pages are fully built, plus `/resources` (originally
+scoped for Stage 2, pulled forward — see `roadmap.md`). `About.tsx` has four sections (hero, founder bio with expertise badges, values, AI-GOS mention) — the founder headshot is still a placeholder `div` awaiting a real photo (400×400px, see TODO in `FounderSection`). `Contact.tsx` has three contact options (book, proposal, waitlist), a "What Happens Next" process list, and a copy-to-clipboard email display. `Services.tsx` has two additional hardcoded sections beyond the service rows: `RegionalCoverage` (three jurisdiction cards: US, Singapore, Middle East) and `DiscoveryCTA` (free discovery call CTA) — this data lives inline in the file, not in `services.ts`. `Frameworks.tsx` similarly has hardcoded `FRAMEWORK_OVERVIEWS` and `COMPARISON_ROWS` constants inline rather than in the data layer.
 
 ---
 
@@ -138,6 +140,18 @@ All site data lives in `src/data/`. Shared types are in `src/types/index.ts` —
 - **`JURISDICTION_FLAGS`**: now a single export from `frameworks.ts` (`'United States' | 'International' | 'European Union' | 'Singapore'`) — imported by `index.tsx`, `FrameworkDetail.tsx`, and `Frameworks.tsx`. Adding a new jurisdiction only requires updating `frameworks.ts`.
 
 `useFrameworkCompass` hook in `src/hooks/` manages active selection state. `useScrollAnimation(threshold?)` tracks whether `scrollY` has passed a pixel threshold — used by Navbar to switch between transparent and opaque backgrounds.
+
+### Free Resources — Interactive Checklists
+
+`src/components/InteractiveChecklist/` is a reusable, self-contained tool (no backend) driven entirely by data in `src/data/checklists.ts`. Used twice on `Resources.tsx` (ISO 42001 Gap Checklist, AI Governance Readiness Checklist) via `getChecklistById(id)`.
+
+- State machine (`index.tsx`): `intro → form → results`, local `useState`, no routing involved
+- `ChecklistForm.tsx` — all questions rendered at once (grouped by category via `<fieldset>`), not paginated; submit is disabled until every question is answered (`isChecklistComplete`)
+- Scoring lives in `src/utils/checklistScoring.ts` (`scoreChecklist`) — Yes/Partial/No → 2/1/0 points, matched against each checklist's `bands` (maturity level thresholds) in `checklists.ts`
+- **Progress/score bars use a segmented-block pattern (`SegmentedBar.tsx`), not `style={{ width }}`** — Tailwind can't resolve dynamically-interpolated arbitrary-value classes at build time, and inline styles are prohibited by the coding rules, so bars are rendered as N discrete filled/unfilled blocks instead
+- `ResultsPanel.tsx` shows the score immediately, no email required — email is only requested to unlock the PDF report (`EmailCaptureForm.tsx` → `src/config/kit.ts` → `generateChecklistPdf.ts`)
+- **PDF generation** (`src/utils/generateChecklistPdf.ts`) dynamic-imports `jspdf` (`await import('jspdf')`) so the ~360KB library is never in the initial page bundle — it only loads when a user actually requests a report
+- **Kit (ConvertKit) integration is a placeholder** (`src/config/kit.ts`, `KIT_FORM_ID`) — until a real form ID is set, `submitToKit` no-ops successfully so the tool is fully usable in dev/demo without a Kit account. The endpoint/payload there is best-effort and should be re-verified against Kit's current API docs when wiring up the real account
 
 ---
 

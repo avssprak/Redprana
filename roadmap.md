@@ -18,12 +18,21 @@
 - [x] 05-frameworks-page.md
 - [x] 06-about-contact-pages.md
 - [x] 07-seo-performance-deploy.md
+- [x] 08-resources-page.md — `/resources`: free interactive ISO 42001 Gap Checklist +
+  AI Governance Readiness Checklist (client-side scoring, gated PDF report via
+  Kit email capture). Pulled forward from Stage 2 — see below.
 
 ---
 
 ## Stage 2 — Lead Engine
 
 **Goal**: Generate inbound leads through content and interactive tools.
+
+**Status**: The interactive-checklist half of the "AI Governance Maturity Calculator"
+concept shipped early as the `/resources` page (see Stage 1 list above) — two
+JavaScript-only, no-backend checklists with instant scoring and a gated PDF report.
+Premium templates (paid, via Lemon Squeezy), a broader Maturity Assessment product,
+and training courses are still ahead, per the phased plan below.
 
 **New pages/features**:
 - AI Governance Maturity Calculator (interactive, JavaScript-only, no backend)

@@ -54,3 +54,60 @@ export interface PageSEO {
   description: string
   canonical?: string
 }
+
+// Free Resources — Interactive Checklists
+export type ChecklistAnswerValue = 'yes' | 'partial' | 'no'
+
+export type ChecklistAnswers = Record<string, ChecklistAnswerValue>
+
+export interface ChecklistQuestion {
+  id: string
+  text: string
+}
+
+export interface ChecklistCategory {
+  id: string
+  title: string
+  questions: ChecklistQuestion[]
+}
+
+export interface MaturityBand {
+  minPercentage: number
+  label: string
+  summary: string
+}
+
+export interface ChecklistDefinition {
+  id: string
+  title: string
+  description: string
+  icon: string // lucide-react icon name
+  estimatedMinutes: number
+  categories: ChecklistCategory[]
+  bands: MaturityBand[]
+}
+
+export interface CategoryScore {
+  categoryId: string
+  categoryTitle: string
+  score: number
+  maxScore: number
+  percentage: number
+}
+
+export interface ChecklistResult {
+  totalScore: number
+  maxScore: number
+  percentage: number
+  band: MaturityBand
+  categoryScores: CategoryScore[]
+}
+
+// Free Resources — page catalog
+export interface FreeResource {
+  id: string
+  checklistId: string
+  title: string
+  description: string
+  icon: string // lucide-react icon name
+}
